@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long View3 | Business Metafísico Global</title>
+    
+    <!-- SEO & Open Graph Meta Tags -->
+    <meta name="description" content="Expansão de vida, visão e negócios além das fronteiras. Para quem opera o mundo como campo — não como limite.">
+    <meta property="og:title" content="Long View3 | Business Metafísico Global">
+    <meta property="og:description" content="Plataforma de expansão global e arquitetura de decisão estratégica.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Hotjar Tracking Code -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:1234567,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              champagne: '#D4AF37',
+              graphite: '#1A1A1A',
+              offWhite: '#FAFAF8',
+            },
+            fontFamily: {
+              editorial: ['Cormorant Garamond', 'serif'],
+              ui: ['Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --off-white: #FAFAF8;
+        --graphite: #1A1A1A;
+        --graphite-medium: #4A4A4A;
+        --champagne: #D4AF37;
+        --warm-gray: #7A7A7A;
+      }
+      
+      .dark {
+        --off-white: #0F0F0F;
+        --graphite: #E5E5E5;
+        --graphite-medium: #A0A0A0;
+        --champagne: #D4AF37;
+        --warm-gray: #8E8E8E;
+      }
+      
+      body {
+        background-color: var(--off-white);
+        color: var(--graphite);
+        font-family: 'Inter', sans-serif;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        transition: background-color 300ms ease, color 300ms ease;
+      }
+
+      h1, h2, h3, h4, blockquote {
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      .font-editorial { font-family: 'Cormorant Garamond', serif; }
+      .font-ui { font-family: 'Inter', sans-serif; }
+      
+      .grain-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar-track { background: var(--off-white); }
+      ::-webkit-scrollbar-thumb { background: #E0E0E0; border-radius: 10px; }
+      .dark ::-webkit-scrollbar-thumb { background: #333; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--champagne); }
+
+      .section-fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .section-fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      input[type=range] {
+        -webkit-appearance: none;
+        background: transparent;
+      }
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 1px;
+        background: rgba(0,0,0,0.1);
+        border: none;
+      }
+      .dark input[type=range]::-webkit-slider-runnable-track {
+        background: rgba(255,255,255,0.1);
+      }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 14px;
+        width: 14px;
+        border-radius: 50%;
+        background: var(--graphite);
+        cursor: pointer;
+        margin-top: -7px;
+        transition: all 0.2s ease;
+        border: 2px solid var(--off-white);
+      }
+      input[type=range]:active::-webkit-slider-thumb {
+        transform: scale(1.4);
+        background: var(--champagne);
+      }
+    </style>
+    <script>
+      (function() {
+        const stored = localStorage.getItem('lv3-storage');
+        let theme = 'light';
+        if (stored) {
+          try {
+            const state = JSON.parse(stored).state;
+            if (state && state.theme) {
+              theme = state.theme;
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              theme = 'dark';
+            }
+          } catch (e) {}
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        }
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      })();
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.454.0",
+    "jspdf": "https://esm.sh/jspdf@^2.5.1"
+  }
+}
+</script>
+</head>
+<body class="overflow-x-hidden selection:bg-champagne selection:text-white">
+    <div class="grain-overlay"></div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
