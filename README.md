@@ -1,30 +1,49 @@
+# Long View -- Avaliacao Estrategica de Negocios
 
-# Long View3 — Business Metafísico Global
+![CI](https://github.com/institutoveigacabral-maker/long-view3/actions/workflows/ci.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+Plataforma de avaliacao estrategica com SMQ (Strategic Maturity Quotient), integracao com Gemini AI para analises personalizadas, checkout com conversao multi-moeda e planos de assinatura.
+
+## Stack
+
+- React + Vite + TypeScript
+- Google Gemini AI (@google/genai)
+- jsPDF (exportacao de relatorios)
+
+## Funcionalidades
+
+- Avaliacao SMQ com 4 niveis (Reativo/Observador/Operador/Arquiteto)
+- Grafico radar de dimensoes estrategicas
+- Analise personalizada via Gemini AI com cache
+- Checkout com conversao EUR/USD/BRL
+- Desconto de abandono de 20%
+- Planos de assinatura
 
 ## Setup Local
 
-1. Instale as dependências:
-   ```bash
-   npm install
-   ```
-2. Configure a API Key do Gemini no ambiente:
-   ```bash
-   export API_KEY=your_key_here
-   ```
-3. Inicie o ambiente de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
+```bash
+git clone https://github.com/institutoveigacabral-maker/long-view3.git
+cd long-view3
+npm install
+cp .env.example .env.local  # configurar variaveis
+npm run dev
+```
 
-## Princípios de Manutenção
+## Testes
 
-- **Estética**: Minimalismo europeu. Espaço em branco é luxo.
-- **Linguagem**: Institucional e adulta. Sem promessas vazias.
-- **Performance**: Lighthouse Score deve permanecer > 90.
+```bash
+npm test
+```
 
-## Estrutura de Pastas
+56 testes cobrindo logica de negocio, validacoes e utilitarios.
 
-- `/components`: Elementos de UI atômicos e moleculares.
-- `/services`: Integração com APIs externas (Gemini, Analytics).
-- `/store`: Estado global da aplicação.
-- `/hooks`: Lógica reutilizável (A/B testing, experiments).
+
+
+## Contributing
+
+Ver [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Licenca
+
+MIT -- ver [LICENSE](LICENSE).
