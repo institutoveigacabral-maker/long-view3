@@ -1,7 +1,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { getAntonyResponse } from '../services/geminiService';
-import { useStore } from '../store/useStore';
+import { useStore, type StoreState } from '../store/useStore';
+import { type Message } from '../types';
 import { LoadingState, EmptyState, ErrorState } from './StateLibrary';
 import { Terminal, Send, History, LayoutPanelLeft, ChevronRight, X, ShieldAlert, ShieldCheck, ShieldClose } from 'lucide-react';
 import { useExperiment } from '../hooks/useExperiment';
@@ -207,7 +208,7 @@ export const ChatInterface: React.FC = () => {
             />
           )}
 
-          {messages.map((m, i) => (
+          {messages.map((m: Message, i: number) => (
             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-6 duration-700`}>
               <div className={`max-w-[90%] lg:max-w-[75%] group ${
                 m.role === 'user' 
@@ -225,7 +226,7 @@ export const ChatInterface: React.FC = () => {
                   m.role === 'user' ? 'text-white/40 italic group-hover:text-white/60' : 'text-offWhite/80 group-hover:text-offWhite'
                 }`}>
                   <div className="prose prose-invert prose-sm max-w-none">
-                    {m.text.split('\n').map((line, idx) => (
+                    {m.text.split('\n').map((line: string, idx: number) => (
                       <p key={idx}>{line}</p>
                     ))}
                   </div>

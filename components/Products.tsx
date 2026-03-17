@@ -1,11 +1,11 @@
 
 import React from 'react';
 import { PRODUCTS_CONFIG } from '../constants';
-import { useStore } from '../store/useStore';
+import { useStore, type StoreState } from '../store/useStore';
 import { ScrollReveal } from './ScrollReveal';
 
 export const Products: React.FC = () => {
-  const setCheckout = useStore(state => state.setCheckout);
+  const setCheckout = useStore((state: StoreState) => state.setCheckout);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-black/5 border border-black/5">

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { DIGITAL_PRODUCTS_CONFIG } from '../constants';
-import { useStore } from '../store/useStore';
+import { useStore, type StoreState } from '../store/useStore';
 import { ProductPreviewModal } from './ProductPreviewModal';
 import { Globe, Flag } from 'lucide-react';
 
@@ -10,7 +10,7 @@ export const DigitalLibrary: React.FC = () => {
   const [activeSection, setActiveSection] = useState<number | null>(null);
   const [showPreview, setShowPreview] = useState(false);
   const [modalProduct, setModalProduct] = useState<any>(null);
-  const setCheckout = useStore(state => state.setCheckout);
+  const setCheckout = useStore((state: StoreState) => state.setCheckout);
 
   const toggleExpand = (id: string) => {
     if (expandedId === id) {

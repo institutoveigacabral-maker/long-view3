@@ -10,7 +10,7 @@ import { CheckoutModal } from './components/CheckoutModal';
 import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { CookieConsent } from './components/CookieConsent';
 import { REGIONS_CONFIG, SECTIONS } from './constants';
-import { useStore } from './store/useStore';
+import { useStore, type StoreState } from './store/useStore';
 import { useExperiment } from './hooks/useExperiment';
 import { trackEvent, trackTimeOnSection } from './services/analytics';
 
@@ -21,7 +21,7 @@ const ChatInterface = lazy(() => import('./components/ChatInterface').then(m => 
 const Testimonials = lazy(() => import('./components/Testimonials').then(m => ({ default: m.Testimonials })));
 
 const App: React.FC = () => {
-  const theme = useStore(state => state.theme);
+  const theme = useStore((state: StoreState) => state.theme);
   const heroVariant = useExperiment('hero_text');
   const sectionTimes = useRef<Record<string, number>>({});
 

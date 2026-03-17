@@ -1,11 +1,11 @@
 
 import React from 'react';
 import { SECTIONS } from '../constants';
-import { useStore } from '../store/useStore';
+import { useStore, type StoreState } from '../store/useStore';
 
 export const Header: React.FC = () => {
-  const theme = useStore(state => state.theme);
-  const toggleTheme = useStore(state => state.toggleTheme);
+  const theme = useStore((state: StoreState) => state.theme);
+  const toggleTheme = useStore((state: StoreState) => state.toggleTheme);
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] bg-offWhite/90 dark:bg-[#0F0F0F]/90 backdrop-blur-xl border-b border-black/[0.03] dark:border-white/[0.03] px-4 md:px-12 py-5 flex justify-between items-center transition-all duration-300">

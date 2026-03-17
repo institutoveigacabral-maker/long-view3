@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, Gift } from 'lucide-react';
-import { useStore } from '../store/useStore';
+import { useStore, type StoreState } from '../store/useStore';
 import { trackEvent } from '../services/analytics';
 
 export const ExitIntentPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
-  const setCheckout = useStore(state => state.setCheckout);
+  const setCheckout = useStore((state: StoreState) => state.setCheckout);
 
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {

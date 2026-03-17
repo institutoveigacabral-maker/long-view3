@@ -1,14 +1,14 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { SMQ_DIMENSIONS } from '../constants';
-import { useStore } from '../store/useStore';
+import { useStore, type StoreState } from '../store/useStore';
 import { FileDown, Target, TrendingUp, Award, Zap, X, Info } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import { trackEvent } from '../services/analytics';
 
 export const SMQAssessment: React.FC = () => {
-  const scores = useStore(state => state.scores) as Record<string, number>;
-  const setScore = useStore(state => state.setScore);
+  const scores = useStore((state: StoreState) => state.scores) as Record<string, number>;
+  const setScore = useStore((state: StoreState) => state.setScore);
   const [modalDimension, setModalDimension] = useState<typeof SMQ_DIMENSIONS[0] | null>(null);
   const [isExporting, setIsExporting] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

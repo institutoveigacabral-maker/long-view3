@@ -1,9 +1,9 @@
 
-import { create } from 'https://esm.sh/zustand';
-import { persist } from 'https://esm.sh/zustand/middleware';
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { Message } from '../types';
 
-interface StoreState {
+export interface StoreState {
   // Chat
   messages: Message[];
   isLoading: boolean;
