@@ -4,7 +4,7 @@ import { getAntonyResponse } from '../services/geminiService';
 import { useStore, type StoreState } from '../store/useStore';
 import { type Message } from '../types';
 import { LoadingState, EmptyState, ErrorState } from './StateLibrary';
-import { Terminal, Send, History, LayoutPanelLeft, ChevronRight, X, ShieldAlert, ShieldCheck, ShieldClose } from 'lucide-react';
+import { Terminal, Send, History, LayoutPanelLeft, ChevronRight, X, ShieldAlert, ShieldCheck, ShieldClose, Zap } from 'lucide-react';
 import { useExperiment } from '../hooks/useExperiment';
 import { trackEvent } from '../services/analytics';
 
@@ -12,7 +12,8 @@ const MACROS = [
   { label: "Validar Tese", prompt: "Audite minha tese de expansão global baseada em arbitragem de jurisdição." },
   { label: "Identificar Risco", prompt: "Quais são os principais pontos de ruptura na minha arquitetura de decisão atual?" },
   { label: "Escala Global", prompt: "Como posso escalar minha visão sem depender da minha presença física em cada território?" },
-  { label: "Síntese", prompt: "Sintetize os princípios do Business Metafísico aplicados ao meu cenário." }
+  { label: "Síntese", prompt: "Sintetize os princípios do Business Metafísico aplicados ao meu cenário." },
+  { label: "Boost", prompt: "Analise minha posição estratégica atual e forneça um plano de aceleração imediata: identifique as alavancas de maior impacto, os quick wins disponíveis e uma sequência de execução para multiplicar resultados nos próximos 90 dias." }
 ];
 
 type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH' | null;
@@ -260,12 +261,22 @@ export const ChatInterface: React.FC = () => {
         <div className="p-4 md:p-8 border-t border-white/5 bg-black/95 shrink-0">
           <div className="flex overflow-x-auto gap-3 mb-6 pb-2 no-scrollbar -mx-4 px-4 mask-fade-edges">
             {MACROS.map((macro, idx) => (
-              <button 
+              <button
                 key={idx}
-                onClick={() => handleSend(macro.prompt)}
+                onClick={() => {
+                  if (macro.label === 'Boost') {
+                    trackEvent('boost_command_activated');
+                  }
+                  handleSend(macro.prompt);
+                }}
                 disabled={isLoading}
-                className="whitespace-nowrap px-6 py-3 border border-white/10 text-[9px] font-ui font-black uppercase tracking-[0.2em] text-white/40 hover:text-champagne hover:border-champagne/40 transition-all active:scale-95 bg-white/[0.02] flex items-center space-x-2 min-h-[44px]"
+                className={`whitespace-nowrap px-6 py-3 border text-[9px] font-ui font-black uppercase tracking-[0.2em] transition-all active:scale-95 flex items-center space-x-2 min-h-[44px] ${
+                  macro.label === 'Boost'
+                    ? 'border-champagne/30 text-champagne hover:bg-champagne/10 hover:border-champagne/60 bg-champagne/[0.05]'
+                    : 'border-white/10 text-white/40 hover:text-champagne hover:border-champagne/40 bg-white/[0.02]'
+                }`}
               >
+                {macro.label === 'Boost' && <Zap className="w-3 h-3" />}
                 <span>{macro.label}</span>
                 <ChevronRight className="w-3 h-3 opacity-20" />
               </button>
