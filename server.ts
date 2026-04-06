@@ -1,11 +1,13 @@
 
 import express from 'https://esm.sh/express@4.18.2';
+import helmet from 'https://esm.sh/helmet@7.0.0';
 import rateLimit from 'https://esm.sh/express-rate-limit@6.7.0';
 import winston from 'https://esm.sh/winston@3.8.2';
 import cors from 'https://esm.sh/cors@2.8.5';
 import { GoogleGenAI, Type } from "@google/genai";
 
 const app = express();
+app.use(helmet());
 app.use(express.json());
 app.use(cors());
 
